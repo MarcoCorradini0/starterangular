@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Prenotazioni Gelati</h1>
+    <form (ngSubmit)="save()" class="form-card">
+        <h3>Nuova Prenotazione</h3>
+
+        <label for="nomeCliente">Nome Cliente</label>
+        <input [(ngModel)]="form.nomeCliente" name="nomeCliente" id="nomeCliente">
+
+        <label for="gusto">Gusto</label>
+        <input [(ngModel)]="form.gusto" name="gusto" id="gusto">
+
+        <label for="quantita">Quantità</label>
+        <input [(ngModel)]="form.quantita" name="quantita" type="number" id="quantita">
+
+        <label for="dataRitiro">Data Ritiro</label>
+        <input [(ngModel)]="form.dataRitiro" name="dataRitiro" type="date" id="dataRitiro">
+
+        <button type="submit">Salva</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Gusto</th>
+                <th>Quantità</th>
+                <th>Data</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of list; track item.id) {
+                <tr>
+                    <td>{{ item.nomeCliente }}</td>
+                    <td>{{ item.gusto }}</td>
+                    <td>{{ item.quantita }}</td>
+                    <td>{{ item.dataRitiro }}</td>
+
+                    <td>
+                        <button class="delete-btn" (click)="delete(item.id)">Elimina</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<app-footer></app-footer>
